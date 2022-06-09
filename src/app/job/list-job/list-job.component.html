@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Date de création</th>
+      <th scope="col">Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let job of Jobs; let i = index">
+      <th scope="row">{{ job._id }}</th>
+      <td>{{ job.entreprise }}</td>
+      <td>{{ job.titre }}</td>
+      <td>{{ job.dateCreation }}</td>
+      <td>
+        <span  class="text-danger">Delete</span> &nbsp;
+        <span class="text-primary">Edit</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

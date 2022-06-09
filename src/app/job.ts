@@ -5,9 +5,6 @@ export interface Job {
   tags?: string;
   emailCandidature?: string;
   emailObjet?: string;
-  region?: string;
-  district?: string;
-  commune?: string;
   categorie?: string;
   sousCategorie?: string;
   description?: string;

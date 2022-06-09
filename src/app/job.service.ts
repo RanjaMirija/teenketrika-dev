@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireDatabase, AngularFireList, AngularFireObject,} from '@angular/fire/compat/database';
 import { Job } from './job';
 
 @Injectable({
@@ -7,25 +8,27 @@ import { Job } from './job';
 })
 export class JobService {
 
-  constructor(private angularFirestore : AngularFirestore) { }
+  jobsRef! : AngularFireList<any>;
 
-  getJobDoc(id : string){
-    return this.angularFirestore
-      .collection('jobs-list')
-      .doc(id)
-      .valueChanges();
-  }
+  constructor(private db: AngularFireDatabase) { }
 
   getJobList() {
+    this.jobsRef = this.db.list('jobs');
+    return this.jobsRef;
+  }
+
+/*
+  getJobDoc(id : string){
     return this.angularFirestore
-      .collection('jobs-list')
-      .snapshotChanges();
+      .collection('jobs')
+      .doc(id)
+      .valueChanges();
   }
 
   createJob(job: Job) {
     return new Promise<any>((resolve, reject) => {
       this.angularFirestore
-        .collection('jobs-list')
+        .collection('jobs')
         .add(job)
         .then(
           (response) => {
@@ -38,22 +41,19 @@ export class JobService {
 
   deleteJob(job: Job) {
     return this.angularFirestore
-      .collection('jobs-list')
+      .collection('jobs')
       .doc(job._id)
       .delete();
   }
 
   updateJob(job: Job, id: string) {
-    return this.angularFirestore.collection('jobs-list').doc(id).update({
+    return this.angularFirestore.collection('jobs').doc(id).update({
       entreprise: job.entreprise,
       titre: job.titre,
       typeContrat: job.typeContrat,
       tags: job.tags,
       emailCandidature: job.emailCandidature,
       emailObjet: job.emailObjet,
-      region: job.region,
-      district: job.district,
-      commune: job.commune,
       categorie: job.categorie,
       sousCategorie: job.sousCategorie,
       description: job.description,
@@ -65,5 +65,5 @@ export class JobService {
       id: job._id
     });
   }
-
+*/
 }
