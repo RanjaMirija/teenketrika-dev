@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-striped table-bordered table-sm row-border hover" *ngIf="isShow" datatable [dtOptions]="dtOptions">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -11,9 +11,9 @@
   <tbody>
     <tr *ngFor="let job of Jobs; let i = index">
       <th scope="row">{{ job._id }}</th>
-      <td>{{ job.entreprise }}</td>
-      <td>{{ job.titre }}</td>
-      <td>{{ job.dateCreation }}</td>
+      <td>{{ job.entreprise | uppercase}}</td>
+      <td>{{ job.titre | titlecase}}</td>
+      <td>{{ job.dateCreation |date:'M/d/yy, h:mm a'}}</td>
       <td>
         <span  class="text-danger">Delete</span> &nbsp;
         <span class="text-primary">Edit</span>
