@@ -70,5 +70,79 @@
     </div>
   </div>
 
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="categorie" formControlName="categorie" placeholder="Catégorie de l'emploi" required>
+    <label for="categorie">Catégorie</label>
+  </div>
+  <div *ngIf="categorie.invalid && (categorie.dirty || categorie.touched)" class="alert alert-danger">
+    <div *ngIf="categorie.errors?.['required']">
+      Categorie is required.
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="sousCategorie" formControlName="sousCategorie" placeholder="sousCategorie de l'emploi" required>
+    <label for="sousCategorie">SousCategorie</label>
+  </div>
+  <div *ngIf="sousCategorie.invalid && (sousCategorie.dirty || sousCategorie.touched)" class="alert alert-danger">
+    <div *ngIf="sousCategorie.errors?.['required']">
+      Sous Categorie is required.
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="Description" id="description" required></textarea>
+      <label for="description">Description</label>
+    </div>
+  </div>
+  <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+    <div *ngIf="description.errors?.['required']">
+      Description Objet is required.
+    </div>
+    <div *ngIf="description.errors?.['minlength']">
+      Description must be at least 5 characters long.
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="" id="mission"></textarea>
+      <label for="mission">Mision</label>
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="" id="profile"></textarea>
+      <label for="profile">Profile recherché</label>
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="" id="dossierRequis"></textarea>
+      <label for="dossierRequis">Dossier Requis</label>
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="" id="details"></textarea>
+      <label for="details">Details</label>
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="dateCreation" formControlName="dateCreation" placeholder="Date de création de la demande" required>
+    <label for="dateCreation">Date de Creation</label>
+  </div>
+  <div *ngIf="dateCreation.invalid && (dateCreation.dirty || dateCreation.touched)" class="alert alert-danger">
+    <div *ngIf="dateCreation.errors?.['required']">
+     Date Creation is required.
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="JobForm.invalid">Ajouter</button>
 
 </form>
