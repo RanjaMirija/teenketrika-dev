@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { JobService } from 'src/app/job.service';
 import { Job } from 'src/app/job';
+
+
 
 
 @Component({
@@ -26,7 +28,7 @@ export class ListJobComponent implements OnInit {
         a['$key'] = item.key;
         this.Jobs.push(a as Job)
       })
-      console.log(this.Jobs);
+
       this.dtOptions = {
         pagingType: 'full_numbers',
         pageLength: 5,
@@ -34,7 +36,6 @@ export class ListJobComponent implements OnInit {
         processing: true
       };
       this.isShow = true;
-
     });
   }
 

@@ -1,1 +1,74 @@
-<p>form-job works!</p>
+<form class="job-form" autocomplete="off" [formGroup]="JobForm" (ngSubmit)="submitForm()">
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="entreprise" formControlName="entreprise" placeholder="Nom de l'entreprise" required>
+    <label for="entreprise">Entreprise</label>
+  </div>
+  <div *ngIf="entreprise.invalid && (entreprise.dirty || entreprise.touched)" class="alert alert-danger">
+    <div *ngIf="entreprise.errors?.['required']">
+      Entreprise is required.
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="titre" formControlName="titre" placeholder="Titre de l'offre" required>
+    <label for="titre">Titre</label>
+  </div>
+  <div *ngIf="titre.invalid && (titre.dirty || titre.touched)" class="alert alert-danger">
+    <div *ngIf="titre.errors?.['required']">
+      Titre is required.
+    </div>
+    <div *ngIf="titre.errors?.['minlength']">
+      Titre must be at least 15 characters long.
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <select class="form-select" aria-label="typeContrat">
+      <option selected>Type de contrat</option>
+      <option value="CDI">CDI</option>
+      <option value="CDD">CDD</option>
+      <option value="Stage">Stage</option>
+      <option value="Alternant">Alternant</option>
+      <option value="Freelance">Freelance</option>
+      <option value="Offshore">Offshore</option>
+    </select>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="tags" formControlName="tags" placeholder="tags" required>
+    <label for="tags">Tags</label>
+  </div>
+  <div *ngIf="tags.invalid && (tags.dirty || tags.touched)" class="alert alert-danger">
+    <div *ngIf="tags.errors?.['required']">
+      tags is required.
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="emailCandidature" formControlName="emailCandidature" placeholder="Adresse d'envoie des candidatures" required>
+    <label for="emailCandidature">Email candidature</label>
+  </div>
+  <div *ngIf="emailCandidature.invalid && (emailCandidature.dirty || emailCandidature.touched)" class="alert alert-danger">
+    <div *ngIf="emailCandidature.errors?.['required']">
+      Email Candidature is required.
+    </div>
+    <div *ngIf="emailCandidature.errors?.['email']">
+      Adresse invalide
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input class="form-control" type="text" id="emailObjet" formControlName="emailObjet" placeholder="Objet de l'email" required>
+    <label for="emailObjet">Objet du mail</label>
+  </div>
+  <div *ngIf="emailObjet.invalid && (emailObjet.dirty || emailObjet.touched)" class="alert alert-danger">
+    <div *ngIf="emailObjet.errors?.['required']">
+      Email Objet is required.
+    </div>
+    <div *ngIf="tags.errors?.['minlength']">
+      L'objet de l'email must be at least 5 characters long.
+    </div>
+  </div>
+
+
+</form>
